@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>My Travel Itinerary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .itinerary-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+        .itinerary-item h2 {
+            margin-top: 0;
+        }
+        .itinerary-item p {
+            margin: 5px 0;
+        }
+        .itinerary-item .location {
+            font-weight: bold;
+        }
+        .itinerary-item .date {
+            color: #666;
+        }
+        .back-button {
+            position: fixed; /* Fix the button to the bottom of the screen */
+            bottom: 20px; /* Adjust the vertical position */
+            left: 50%; /* Center the button horizontally */
+            transform: translateX(-50%); /* Offset to center */
+            
+            background-color: #388e3c; /* Green color for the button */
+            color: #fff; /* White text color */
+            padding: 10px 20px; /* Add some padding */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Add rounded corners */
+            cursor: pointer; /* Change cursor to indicate clickability */
+            text-decoration: none; /* Remove underline from the link text */
+        }
+        .back-button .back-link {  /* Target the anchor element within the button */
+            color: white;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #2e602b; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Travel Itinerary</h1>
+        <div class="itinerary-item">
+            <h2>Day 1</h2>
+            <p class="date">Date: April 25, 2024</p>
+            <p><span class="location">New York City</span> to <span class="location">Paris</span></p>
+            <p>Flight: <span class="flight-number">Flight 123</span></p>
+            <p>Departure: <span class="time">10:00 AM</span>, Arrival: <span class="time">3:00 PM</span></p>
+        </div>
+        <div class="itinerary-item">
+            <h2>Day 2</h2>
+            <p class="date">Date: April 26, 2024</p>
+            <p><span class="location">Paris</span> to <span class="location">Rome</span></p>
+            <p>Train: <span class="train-name">Eurostar</span></p>
+            <p>Departure: <span class="time">8:00 AM</span>, Arrival: <span class="time">1:00 PM</span></p>
+        </div>
+    </div>
+
+    <div class="back-button">
+        <a href="mainPage.html" class="back-link">Back</a>
+    </div>
+</body>
+</html>

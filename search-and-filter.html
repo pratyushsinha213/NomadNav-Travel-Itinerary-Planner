@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Search and Filter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: calc(100% - 250px); /* Adjusted width */
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            float: left;
+        }
+        .filter-button,
+        .reset-button {
+            padding: 10px 20px; /* Adjusted padding */
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            float: left;
+            margin-left: 10px;
+        }
+        .filter-button:hover,
+        .reset-button:hover {
+            background-color: #0056b3; /* Darker color on hover */
+        }
+        .filter-menu {
+            float: left;
+            margin-left: 10px;
+        }
+        .filter-menu button {
+            display: block;
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            clear: both;
+        }
+        li {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .back-button {
+            position: fixed; /* Fix the button to the bottom of the screen */
+            bottom: 20px; /* Adjust the vertical position */
+            left: 50%; /* Center the button horizontally */
+            transform: translateX(-50%); /* Offset to center */
+            
+            background-color: #388e3c; /* Green color for the button */
+            color: #fff; /* White text color */
+            padding: 10px 20px; /* Add some padding */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Add rounded corners */
+            cursor: pointer; /* Change cursor to indicate clickability */
+            text-decoration: none; /* Remove underline from the link text */
+        }
+        .back-button .back-link {  /* Target the anchor element within the button */
+            color: white;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #2e602b; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search and Filter</h1>
+        <input type="text" id="searchInput" oninput="filterItems()" placeholder="Search...">
+        <div class="filter-menu">
+            <button class="filter-button" onclick="toggleFilterMenu()">Filter</button>
+            <div id="filterMenu" style="display: none;">
+                <button class="filter-button" onclick="filterByCategory('flights')">Flights</button>
+                <button class="filter-button" onclick="filterByCategory('hotels')">Hotels</button>
+                <button class="filter-button" onclick="filterByCategory('transport')">Other Transport</button>
+            </div>
+        </div>
+        <button class="reset-button" onclick="resetFilter()">Reset Filter</button>
+        <ul id="resultsList">
+            <li data-category="flights">New York City - Paris (Flight 123) - Departure: 10:00 AM, Arrival: 3:00 PM</li>
+            <li data-category="flights">Paris - London (Flight 456) - Departure: 1:00 PM, Arrival: 4:00 PM</li>
+            <li data-category="transport">London - Tokyo (Train) - Departure: 9:00 AM, Arrival: 10:00 PM</li>
+            <li data-category="hotels">Tokyo Hotel - Check-in: 2:00 PM, Check-out: 12:00 PM</li>
+            <li data-category="flights">Tokyo - Sydney (Flight 321) - Departure: 11:00 AM, Arrival: 7:00 PM</li>
+            <li data-category="hotels">Sydney Hotel - Check-in: 3:00 PM, Check-out: 11:00 AM</li>
+            <li data-category="transport">New York City - London (Bus) - Departure: 12:00 PM, Arrival: 5:00 PM</li>
+            <li data-category="transport">Paris - Rome (Car) - Departure: 8:00 AM, Arrival: 4:00 PM</li>
+            <li data-category="flights">Rome - Madrid (Flight 789) - Departure: 9:00 AM, Arrival: 11:00 AM</li>
+        </ul>
+    </div>
+
+    <div class="back-button">
+        <a href="mainPage.html" class="back-link">Back</a>
+    </div>
+
+    <script>
+        function filterItems() {
+            var input = document.getElementById('searchInput').value.toUpperCase();
+            var ul = document.getElementById('resultsList');
+            var li = ul.getElementsByTagName('li');
+
+            for (var i = 0; i < li.length; i++) {
+                var txtValue = li[i].textContent || li[i].innerText;
+                if (txtValue.toUpperCase().indexOf(input) > -1) {
+                    li[i].style.display = '';
+                } else {
+                    li[i].style.display = 'none';
+                }
+            }
+        }
+
+        function filterByCategory(category) {
+            var ul = document.getElementById('resultsList');
+            var li = ul.getElementsByTagName('li');
+
+            for (var i = 0; i < li.length; i++) {
+                if (li[i].getAttribute('data-category') === category) {
+                    li[i].style.display = '';
+                } else {
+                    li[i].style.display = 'none';
+                }
+            }
+        }
+
+        function toggleFilterMenu() {
+            var filterMenu = document.getElementById('filterMenu');
+            if (filterMenu.style.display === 'none') {
+                filterMenu.style.display = 'block';
+            } else {
+                filterMenu.style.display = 'none';
+            }
+        }
+
+        function resetFilter() {
+            var ul = document.getElementById('resultsList');
+            var li = ul.getElementsByTagName('li');
+
+            // Reset the display of all list items
+            for (var i = 0; i < li.length; i++) {
+                li[i].style.display = '';
+            }
+
+            // Clear the search input
+            document.getElementById('searchInput').value = '';
+        }
+    </script>
+</body>
+</html>

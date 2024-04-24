@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <style>
+      /* CSS styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      p {
+        font-size: 18px;
+        text-align: center;
+        line-height: 1.6;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      .image {
+        width: 100px;
+        margin-right: 10px;
+      }
+      .header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 24px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 28px;
+      }
+
+      .nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .nav li {
+        display: inline-block;
+        margin-right: 20px;
+      }
+
+      .nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+        transition: color 0.3s ease;
+      }
+
+      .nav a:hover {
+        color: chocolate;
+      }
+
+      .main {
+        display: flex;
+        flex-grow: 1;
+        padding: 20px;
+      }
+
+      .sidebar {
+        width: 300px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        margin-right: 20px;
+        font-size: 18px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .sidebar h2 {
+        margin-top: 0;
+        font-size: 22px;
+        color: #333;
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .sidebar li {
+        margin-bottom: 15px;
+      }
+
+      .sidebar a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 18px;
+        transition: color 0.3s ease;
+      }
+
+      .sidebar a:hover {
+        color: slateblue;
+        font-weight: bold;
+      }
+
+      .more-details {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+        color: #007bff;
+        font-size: 18px;
+        transition: color 0.3s ease;
+        text-decoration: none;
+      }
+
+      .more-details:hover {
+        color: #0056b3;
+      }
+
+      .content {
+        flex-grow: 1;
+        padding: 20px;
+        font-size: 18px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .content h2 {
+        margin-top: 0;
+        font-size: 24px;
+        color: #333;
+      }
+
+      .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 20px;
+      }
+
+      .tool-grid a {
+        text-decoration: none;
+        color: #333;
+        display: block;
+        padding: 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .tool-grid a:hover {
+        background-color: #f0f0f0;
+      }
+
+      .tool-grid img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        margin-bottom: 15px;
+        border-radius: 5px;
+      }
+
+      .tool-grid h3 {
+        margin: 0;
+        font-size: 22px;
+        color: #333;
+      }
+
+      .footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .footer p {
+        margin: 0;
+        color: white;
+        text-align: center;
+      }
+
+      .container {
+        color: #fff;
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .container h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .container p {
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: white;
+        color: #007bff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+
+      .features {
+        padding: 80px 0;
+        text-align: center;
+        background-color: #f0f0f0; /* Added background color */
+        display: flex; /* Added display flex */
+        justify-content: space-around; /* Added justify content */
+        align-items: center; /* Added align items */
+      }
+
+      .features h2 {
+        font-size: 36px;
+        margin-bottom: 40px;
+      }
+
+      .feature {
+        margin-bottom: 40px;
+        flex-basis: 30%; /* Adjusted flex basis */
+      }
+
+      .feature img {
+        width: 80px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <img class="image" src="favicon.png" alt="" />
+      <h1>NomadNav – Travel Itinerary Planner</h1>
+      <nav class="nav">
+        <ul>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="settings.html">Settings</a></li>
+          <li><a href="budgetTracker.html">Expense Tracker</a></li>
+          <li><a href="itinerary-creation.html">Itinerary Creation</a></li>
+          <li><a href="itinerary.html">Itinerary Display</a></li>
+          <li><a href="search-and-filter.html">Search &amp; Filter</a></li>
+          <li><a href="login.html">Log Out</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main">
+      <aside class="sidebar">
+        <h2>Latest Travel News</h2>
+        <ul>
+          <li><a href="https://www.newdelhiairport.in/covid19" target="_blank">New COVID-19 Travel Guidelines Released</a></li>
+          <li><a href="https://www.travelandleisure.com/best-places-to-go-2024-8385979" target="_blank">Top Destinations for Summer 2024</a></li>
+          <li><a href="#">Tips for Traveling on a Budget</a></li>
+          <li><a href="#">Exploring the Hidden Gems of Southeast Asia</a></li>
+          <li><a href="#">Sustainable Travel: Eco-Friendly Destinations</a></li>
+          <li><a href="#">Solo Travel: Embracing the Journey Alone</a></li>
+          <li><a href="https://www.travelandleisure.com/best-places-to-go-2024-8385979#toc-for-adventurous-travelers" target="_blank">Adventure Travel: Thrilling Experiences Around the World</a></li>
+          <li><a href="https://www.travelandleisure.com/best-places-to-go-2024-8385979#toc-for-cultural-immersion" target="_blank">Cultural Immersion: Connecting with Local Communities</a></li>
+          <li><a href="#">Family-Friendly Destinations: Making Memories Together</a></li>
+          <li><a href="#">Luxury Travel: Indulging in Ultimate Comfort and Exclusivity</a></li>
+          <li><a href="#">Off-the-Beaten-Path Adventures: Discovering Hidden Wonders</a></li>
+          <li><a href="#">Travel Photography Tips: Capturing Your Journey</a></li>
+          <li><a href="#">Wellness Retreats: Rejuvenate Your Mind, Body, and Soul</a></li>
+          <li><a href="#">Cruise Vacations: Sailing to Exotic Ports of Call</a></li>
+          <li><a href="#">Culinary Travel: Exploring Global Flavors and Cuisine</a></li>
+        </ul>
+        <a href="https://timesofindia.indiatimes.com/travel/travel-news" class="more-details" target="_blank">See More News</a>
+      </aside>
+
+      <section class="content">
+        <div class="container">
+          <h2>Plan Your Adventures with NomadNav</h2>
+          <p>
+            Organize your trips, flights, accommodations, and more all in one place.
+          </p>
+          <a href="itinerary-creation.html" class="btn">Get Started</a>
+        </div>
+        <div class="features">
+          <h2 style="padding-bottom: 0%; margin-bottom: -10%">Features</h2>
+        </div>
+        <div class="features">
+          <div class="feature">
+            <img src="icon1.png" alt="Feature 1" />
+            <h3>Easy Itinerary Creation</h3>
+            <p>Create detailed itineraries for your trips with ease.</p>
+          </div>
+          <div class="feature">
+            <img src="icon2.png" alt="Feature 2" />
+            <h3>Flight and Hotel Management</h3>
+            <p>Keep track of your flights and hotel bookings effortlessly.</p>
+          </div>
+          <div class="feature">
+            <img src="icon3.png" alt="Feature 3" />
+            <h3>Real-Time Updates</h3>
+            <p>Stay informed with real-time updates and notifications.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2024 NomadNav. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

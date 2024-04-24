@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Create Itinerary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #itineraryDetails {
+            margin-top: 20px;
+        }
+        .back-button {
+            position: fixed; /* Fix the button to the bottom of the screen */
+            bottom: 20px; /* Adjust the vertical position */
+            left: 50%; /* Center the button horizontally */
+            transform: translateX(-50%); /* Offset to center */
+            
+            background-color: #388e3c; /* Green color for the button */
+            color: #fff; /* White text color */
+            padding: 10px 20px; /* Add some padding */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Add rounded corners */
+            cursor: pointer; /* Change cursor to indicate clickability */
+            text-decoration: none; /* Remove underline from the link text */
+        }
+        .back-button .back-link {  /* Target the anchor element within the button */
+            color: white;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #2e602b; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Itinerary</h1>
+    <form id="itineraryForm">
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" required>
+        
+        <label for="departureDate">Departure Date:</label>
+        <input type="date" id="departureDate" required>
+        
+        <label for="returnDate">Return Date:</label>
+        <input type="date" id="returnDate" required>
+        
+        <!-- Dropdown for selecting mode of transport -->
+        <label for="transport">Mode:</label>
+        <select id="transport">
+            <option value="flight">Flight</option>
+            <option value="hotel">Hotel</option>
+            <option value="other">Other</option>
+        </select>
+        
+        <button type="submit">Create Itinerary</button>
+    </form>
+
+    <div class="back-button">
+        <a href="mainPage.html" class="back-link">Back</a>
+    </div>
+
+    <!-- Element to display itinerary details -->
+    <div id="itineraryDetails"></div>
+
+    <script>
+        document.getElementById('itineraryForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            // Get form values
+            var destination = document.getElementById('destination').value;
+            var departureDate = document.getElementById('departureDate').value;
+            var returnDate = document.getElementById('returnDate').value;
+            var transport = document.getElementById('transport').value;
+            // Display itinerary details
+            var itineraryDetails = document.getElementById('itineraryDetails');
+            itineraryDetails.innerHTML = '<h2>Itinerary Created</h2>' +
+                                         '<p><strong>Destination:</strong> ' + destination + '</p>' +
+                                         '<p><strong>Departure Date:</strong> ' + departureDate + '</p>' +
+                                         '<p><strong>Return Date:</strong> ' + returnDate + '</p>' +
+                                         '<p><strong>Mode:</strong> ' + transport + '</p>';
+        });
+    </script>
+</body>
+</html>
